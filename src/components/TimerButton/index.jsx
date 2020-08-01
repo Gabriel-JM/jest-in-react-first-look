@@ -1,8 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './timerButton.css'
 
 function TimerButton({ buttonAction, buttonValue }) {
-  return <div className="button-container"></div>
+  return (
+    <div className="button-container" onClick={() => buttonAction()}>
+      <p className="button-value">{buttonValue}</p>
+    </div>
+  )
 }
 
 TimerButton.propTypes = {

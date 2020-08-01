@@ -1,34 +1,54 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './timer.css'
 import TimerButton from '../TimerButton'
 
-function Timer() {
-  const [minutes, setMinutes] = useState(25)
-  const [seconds, setSeconds] = useState(0)
-  const [isOn, setIsOn] = useState(false)
+class Timer extends React.Component {
 
-  function startTimer() {
+  constructor(props) {
+    super(props)
+    this.state = {
+      minutes: 25,
+      seconds: 0,
+      isOn: false
+    }
+  }
+
+  startTimer() {
     console.log('Starting timer...')
   }
 
-  function stopTimer() {
+  stopTimer() {
     console.log('Stopping timer...')
   }
 
-  function resetTimer() {
+  resetTimer() {
     console.log('Resetting timer...')
   }
 
-  return (
-    <div className="time-container">
-      <div className="timer-display"></div>
-      <div className="timer-button-container">
-        <TimerButton buttonAction={startTimer} buttonValue={'Start'} />
-        <TimerButton buttonAction={stopTimer} buttonValue={'Stop'} />
-        <TimerButton buttonAction={resetTimer} buttonValue={'Reset'} />
+  render() {
+    return (
+      <div className="time-container">
+        <div className="timer-display"></div>
+        <div className="timer-button-container">
+          <TimerButton
+            className="start-timer" 
+            buttonAction={this.startTimer}
+            buttonValue={'Start'}
+          />
+          <TimerButton
+            className="stop-timer"
+            buttonAction={this.stopTimer}
+            buttonValue={'Stop'}
+          />
+          <TimerButton
+            className="reset-timer"
+            buttonAction={this.resetTimer}
+            buttonValue={'Reset'}
+          />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Timer
